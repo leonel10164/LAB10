@@ -13,3 +13,18 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Configuracion local del IDE y secretos
+.idea/
+.env
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-journal
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.jks
+*.keystore
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EventFlow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>EventFlow · Logística de eventos</h1>
+    <div id="auth-box">
+      <span id="auth-status">Sin sesión</span>
+      <input id="login-user" placeholder="Usuario" autocomplete="username">
+      <input id="login-pass" type="password" placeholder="Contraseña"
+             autocomplete="current-password">
+      <button id="btn-login" type="button">Entrar</button>
+      <button id="btn-logout" type="button" hidden>Salir</button>
+    </div>
+  </header>
+
+  <div id="mensaje" role="alert" aria-live="polite" hidden></div>
+
+  <main>
+    <section>
+      <h2>Espacios</h2>
+      <form id="form-espacio">
+        <input name="nombre" placeholder="Nombre" required minlength="3">
+        <input name="ubicacion" placeholder="Ubicación / bloque" required>
+        <input name="aforo_maximo" type="number" min="1" placeholder="Aforo"
+               required>
+        <select name="estado">
+          <option value="DISPONIBLE">Disponible</option>
+          <option value="OCUPADO">Ocupado</option>
+          <option value="MANTENIMIENTO">Mantenimiento</option>
+        </select>
+        <button type="submit">Registrar espacio</button>
+      </form>
+      <div id="lista-espacios" class="grid"></div>
+    </section>
+
+    <section>
+      <h2>Recursos técnicos</h2>
+      <form id="form-recurso">
+        <input name="nombre" placeholder="Equipo" required>
+        <input name="codigo_inventario" placeholder="Código (EQ-0001)"
+               required>
+        <input name="costo" type="number" min="0.01" step="0.01"
+               placeholder="Costo" required>
+        <input name="stock" type="number" min="0" placeholder="Stock"
+               value="1" required>
+        <select name="espacio" id="select-espacio" required></select>
+        <button type="submit">Registrar recurso</button>
+      </form>
+      <div class="filtros">
+        <select id="filtro-espacio">
+          <option value="">Todos los espacios</option>
+        </select>
+        <input id="filtro-min" type="number" min="0" step="0.01"
+               placeholder="Costo mín.">
+        <input id="filtro-max" type="number" min="0" step="0.01"
+               placeholder="Costo máx.">
+        <button id="btn-filtrar" type="button">Filtrar</button>
+      </div>
+      <div id="lista-recursos" class="grid"></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
